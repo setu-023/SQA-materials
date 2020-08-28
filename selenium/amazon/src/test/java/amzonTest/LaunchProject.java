@@ -78,7 +78,13 @@ public class LaunchProject {
 //		driver.findElement(By.xpath("//div[@id='UserLoginCard']//input[@id='input-password']")).sendKeys(pass);
 
 		
-		driver.findElement(By.xpath("//div[@class='a-box-inner a-padding-extra-large']//div[@class='a-row a-spacing-base']//input[@id='ap_email']")).sendKeys("hello");
+		//driver.findElement(By.xpath("//input[@id='ap_email']")).click();
+		//input[@id='ap_email']
+		//driver.findElement(By.xpath("//div[@id='hmenu-customer-name']")).click();
+		//driver.findElement(By.xpath("//div[@id='UserLoginCard']")).sendKeys(email);
+
+		driver.findElement(By.xpath("//input[@id='ap_email']")).sendKeys("hello");
+		driver.quit();
 
 //		driver.findElement(By.xpath("//div[@id='UserLoginCard']//input[@id='input-password']")).sendKeys(pass);
 //		Thread.sleep(1000);
