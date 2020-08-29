@@ -5,7 +5,10 @@
     <classes>
       <class name="UdemyTest">
         <methods>
+          <include name="testSignUp"/>
+          <include name="testSignInWithIncorrectData"/>
           <include name="f"/>
+          <include name="testSignIn"/>
         </methods>
       </class> <!-- UdemyTest -->
     </classes>

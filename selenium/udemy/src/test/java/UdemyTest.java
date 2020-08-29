@@ -1,10 +1,12 @@
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 public class UdemyTest {
@@ -19,34 +21,22 @@ public class UdemyTest {
 	public static String password  		= "setu2009";
 	public static String expectedUser	= "There was a problem creating your account. Check that your email address is spelled correctly.";
 
-	
-  @Test
+	@Test
+  
   public void f() throws InterruptedException {
 	  
-//	  	System.setProperty("webdriver.chrome.driver", "chromedriver");
-//		driver = new ChromeDriver();
-//		
-	  
-
+		
 	    setBrowser();
 	    setBrowserConfig();
 	    setConnection();
 	    
-		//driver.get("https://www.udemy.com/");
-		
-		//System.out.print(driver.getTitle());		//code for navigating to the URL & maximizing browser
-		//driver.get("https://www.udemy.com/");
-		
-//		driver.manage().timeouts().implicitlyWait(05, TimeUnit.SECONDS);;
-//		driver.manage().window().maximize();
-//		
-//		
-	    
+	    testSignUp();
+	    Thread.sleep(1000);
 		testSignInWithIncorrectData();
-		
-		//testSignIn();
 		Thread.sleep(1000);
-		
+		testSignIn();
+		Thread.sleep(5000);
+	
 		//testSearch();
 
 		driver.quit(); 
@@ -76,7 +66,8 @@ public class UdemyTest {
 		
   }
 	
-		
+  
+@Test
   public void testSignIn() throws InterruptedException {
 			
 			driver.findElement(By.xpath("//a[@class='udlite-btn udlite-btn-small udlite-btn-secondary udlite-heading-sm']")).click();
@@ -92,6 +83,8 @@ public class UdemyTest {
 
 		}
   
+ @Test
+
   public void testSignInWithIncorrectData() throws InterruptedException {
 		
 		driver.findElement(By.xpath("//a[@class='udlite-btn udlite-btn-small udlite-btn-secondary udlite-heading-sm']")).click();
@@ -102,13 +95,39 @@ public class UdemyTest {
 		
 		driver.findElement(By.xpath("//input[@id='submit-id-submit']")).click();
 		Thread.sleep(1000);
+		String actualAlert = driver.findElement(By.xpath("//input[@id='submit-id-submit']")).getText();
+		Thread.sleep(1000);
+		
+		String expectedAlert = "Please enter a part followed by '@'. '@setu.023.gmail.com' is incomplete.";
+		
+		
+		if(!actualAlert.equals(expectedAlert)) {
+			AssertJUnit.assertTrue(true);
+			//System.out.println("PASS");
+		    driver.get("https://www.udemy.com/");
+
+			
+		}else {
+			System.out.println("Fail");
+			AssertJUnit.fail();
+		}
+		
+		
+//		Alert alert = driver.switchTo().alert();
+//		Thread.sleep(1000);
+//		driver.switchTo().alert();
+//		Thread.sleep(1000);
+
 		
 
 
 	}
-		
+	
+  
+@Test
   public void testSignUp() throws InterruptedException {
-//			driver.findElement(By.xpath("//div[@id='UserLoginCard']//input[@id='input-email']")).sendKeys(email);
+	  
+			driver.findElement(By.xpath("//span[text()='Sign up']")).click();
 			driver.findElement(By.xpath("//input[@id='id_fullname']")).sendKeys(full_name);
 			driver.findElement(By.xpath("//input[@id='email--1']")).sendKeys(email);
 			driver.findElement(By.xpath("//input[@id='password']")).sendKeys(password);
@@ -133,6 +152,8 @@ public class UdemyTest {
 				Assert.assertFalse(true);
 				System.out.println("Okay");	
 			}
+			
+			driver.get("https://www.udemy.com/");
 		}
 //  public static void testSearch() throws InterruptedException {
 //	  
