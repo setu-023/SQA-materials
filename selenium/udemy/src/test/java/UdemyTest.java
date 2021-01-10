@@ -16,8 +16,8 @@ public class UdemyTest {
 	public static WebElement element;
 	
 	public static String browser;
-	public static String full_name		= "mursalin setu";
-	public static String email  		= "setu.023@gmail.com";
+	public static String full_name		= "al mursalin";
+	public static String email  		= "@setu.023@gmail.com";
 	public static String password  		= "setu2009";
 	public static String expectedUser	= "There was a problem creating your account. Check that your email address is spelled correctly.";
 
@@ -39,7 +39,7 @@ public class UdemyTest {
 	
 		//testSearch();
 
-		driver.quit(); 
+		//driver.quit(); 
 		
 
 	}
