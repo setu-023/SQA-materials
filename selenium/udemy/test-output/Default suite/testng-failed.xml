@@ -5,7 +5,6 @@
     <classes>
       <class name="UdemyTest">
         <methods>
-          <include name="testSignUp"/>
           <include name="f"/>
         </methods>
       </class> <!-- UdemyTest -->
